@@ -1,8 +1,0 @@
-git:
-  name: milo
-  email: milo@gmail.com
-paths:
-  workspace_root: /Volumes/Workspace/project
-  vscode_cli_dir: /Volumes/Workspace/apps/Visual Studio Code.app/Contents/Resources/app/bin
-servbay:
-  enabled: true
