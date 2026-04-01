@@ -1,0 +1,24 @@
+[pull]
+	rebase = false
+[user]
+	name = milo
+	email = milo@gmail.com
+[fetch]
+	prune = true
+[rebase]
+	autoStash = true
+[push]
+	autoSetupRemote = true
+[branch]
+	sort = -committerdate
+[alias]
+	st = status -sb
+	co = switch
+	cob = switch -c
+	br = branch --sort=-committerdate
+	recent = for-each-ref --sort=-committerdate refs/heads --format='%(committerdate:relative)%09%(refname:short)'
+	graph = log --graph --decorate --oneline --abbrev-commit --all
+	up = pull --rebase --autostash
+	publish = !git push -u origin $(git branch --show-current)
+	sync = !branch=$(git branch --show-current) && if git rev-parse --verify @{upstream} >/dev/null 2>&1; then git fetch --all --prune && git rebase --autostash @{upstream}; else echo \"No upstream configured for $branch\" >&2; exit 1; fi
+	cleanup-merged = !git branch --merged | grep -Ev '(^\\*|main$|master$|develop$|dev$|staging$)' | xargs git branch -d
